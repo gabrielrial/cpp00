@@ -5,7 +5,7 @@ using namespace std;
 
 int main(void)
 {
-	string	input;
+	Phonebook	pb;
 	
 
 	while (1)

@@ -18,6 +18,7 @@ class	PhoneBook
 		void	addContact(void);
 		void	searchContact(void);
 		void	displayContact(int index);
+		void	displayList(void);
 
 	private:
 		static int	_currentContact = 0;
