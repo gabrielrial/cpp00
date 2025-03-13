@@ -33,11 +33,11 @@ class	Contact{
 		~Contact(void);
 	private:
 	
-		string	_firstName[8];
-		string	_lastName[8];
-		string	_nickname[8];
-		string	_phoneNumber[8];
-		string	_darkestSecret[8];
+		string	_firstName;
+		string	_lastName;
+		string	_nickname;
+		string	_phoneNumber;
+		string	_darkestSecret;
 
 };
 
