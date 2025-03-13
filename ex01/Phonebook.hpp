@@ -15,13 +15,13 @@ class	PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 
-		void		addContact(void);
-		void		searchContact(void);
+		void	addContact(void);
+		void	searchContact(void);
+		void	displayContact(int index);
 
 	private:
-		int			_currentContact = 0;
+		static int	_currentContact = 0;
 		Contact		_store[8];
-		int const	_maxContacts = 7;
 
 };
 
@@ -32,7 +32,8 @@ class	Contact{
 		Contact(void);
 		~Contact(void);
 	private:
-	
+
+		int		_index;
 		string	_firstName;
 		string	_lastName;
 		string	_nickname;
