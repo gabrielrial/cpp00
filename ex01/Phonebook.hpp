@@ -1,46 +1,25 @@
 #ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-#include <iostream>
-#include <string>
+#include "lib.hpp"
 
-using namespace std;
-
-
-class	PhoneBook
+class Phonebook 
 {
-	
 	public:
+		Phonebook(void);
+		~Phonebook(void);
 
-		PhoneBook(void);
-		~PhoneBook(void);
-
-		void	addContact(void);
-		void	searchContact(void);
-		void	displayContact(int index);
-		void	displayList(void);
+		void addContact(void);
+		void searchContact(void);
+		void displayContact(Contact contact);
+		void displayList(void);
 
 	private:
-		static int	_currentContact = 0;
-		Contact		_store[8];
+		static int _currentContact;
+		Contact _store[8];
 
-};
-
-class	Contact{
-
-	public:
-
-		Contact(void);
-		~Contact(void);
-	private:
-
-		int		_index;
-		string	_firstName;
-		string	_lastName;
-		string	_nickname;
-		string	_phoneNumber;
-		string	_darkestSecret;
-
+		void printRow(string col1, string col2, string col3, string col4);
+		void printColumn(const string &text);
 };
 
 #endif

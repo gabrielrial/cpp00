@@ -1,11 +1,12 @@
-#include <iostream>
-#include <string>
+
+#include "lib.hpp"
 
 using namespace std;
 
 int main(void)
 {
 	Phonebook	pb;
+	string		input;
 	
 
 	while (1)
@@ -14,22 +15,11 @@ int main(void)
 		std::getline(std::cin, input);
 
 		if (input == "ADD")
-			add_contact();
+			pb.addContact();
 		else if (input == "SEARCH")
-			
+			pb.searchContact();
 		else if (input == "EXIT")
 			break ;
 	}
-	return 0;
-}
-
-void	add_contact(void)
-{
-	string	input;
-
-	std::cout << "ADD: ";
-	std::getline(std::cin, input);
-	if (input)
-	
-	std::cout << "ADD:" << std::endl << std::endl;
+	return (0);
 }

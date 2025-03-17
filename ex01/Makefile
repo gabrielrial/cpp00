@@ -4,16 +4,21 @@ CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SOURCE = phonebook.cpp
+SRC = main.cpp Phonebook.cpp Contact.cpp
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(SOURCE)
-	$(CPP) $(CPPFLAGS) $(SOURCE) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(NAME)
+	rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(NAME)
 
-re: clean all
+re: fclean all
