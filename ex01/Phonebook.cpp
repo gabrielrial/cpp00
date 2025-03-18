@@ -45,28 +45,30 @@ void Phonebook::searchContact(void)
 
 void Phonebook::displayList(void)
 {
-	printRow("Index", "F.Name", "L.Name", "Nickname");
+	cout << "\n==================== CONTACT LIST ====================" << endl;
+	_printRow("Index", "F.Name", "L.Name", "Nickname");
 	for (int i = 0; i < 8; i++)
 	{
 		if (!this->_store[i].getFirstName().empty())
-			printRow(_store[i].getIndex(), _store[i].getFirstName(), _store[i].getLastName(), _store[i].getNickName());
+			_printRow(_store[i].getIndex(), _store[i].getFirstName(), _store[i].getLastName(), _store[i].getNickName());
 	}
+	cout << "======================================================" << endl;
 	return;
 }
 
-void Phonebook::printRow(string col1, string col2, string col3, string col4)
+void Phonebook::_printRow(string col1, string col2, string col3, string col4)
 {
-	printColumn(col1);
+	_printColumn(col1);
 	std::cout << "|";
-	printColumn(col2);
+	_printColumn(col2);
 	std::cout << "|";
-	printColumn(col3);
+	_printColumn(col3);
 	std::cout << "|";
-	printColumn(col4);
+	_printColumn(col4);
 	std::cout << std::endl;
 }
 
-void Phonebook::printColumn(const std::string &text)
+void Phonebook::_printColumn(const std::string &text)
 {
 	if (text.length() > 10)
 		std::cout << std::setw(10) << std::right << text.substr(0, 9) + ".";
@@ -76,51 +78,43 @@ void Phonebook::printColumn(const std::string &text)
 
 void Phonebook::displayContact(Contact contact)
 {
-	std::cout << "First Name:	";
-	std::cout << contact.getFirstName() << endl;
-	std::cout << "Last Name:	";
-	std::cout << contact.getLastName() << endl;
-	std::cout << "Nickname:		";
-	std::cout << contact.getNickName() << endl;
-	std::cout << "Phone Number:	";
-	std::cout << contact.getPhoneNumber() << endl;
-	std::cout << "Darkest Secret:	" << endl;
-	std::cout << contact.getDarkestSecret() << endl;
+    cout << "\n==================== CONTACT DETAILS ====================" << endl;
+    cout << "First Name:      " << contact.getFirstName() << endl;
+    cout << "Last Name:       " << contact.getLastName() << endl;
+    cout << "Nickname:        " << contact.getNickName() << endl;
+    cout << "Phone Number:    " << contact.getPhoneNumber() << endl;
+    cout << "Darkest Secret:  " << contact.getDarkestSecret() << endl;
+    cout << "===========================================================" << endl;
 }
 
 void Phonebook::addContact(void)
 {
-	string input;
-
 	if (_currentContact >= 8 || _currentContact == -1)
 	{
-		if (_currentContact == 8)
+		if (_currentContact >= 8)
 			cout << "Phonebook is full. Replacing the first contact." << endl;
 		_currentContact = 0;
 	}
 
-	_store[_currentContact].setIndex(_currentContact);
-
-	cout << "Enter First Name: ";
-	getline(cin, input);
-	_store[_currentContact].setFirstName(input);
-
-	cout << "Enter Last Name: ";
-	getline(cin, input);
-	_store[_currentContact].setLastName(input);
-
-	cout << "Enter Nickname: ";
-	getline(cin, input);
-	_store[_currentContact].setNickName(input);
-
-	cout << "Enter Phone Number: ";
-	getline(cin, input);
-	_store[_currentContact].setPhoneNumber(input);
-
-	cout << "Enter Darkest Secret: ";
-	getline(cin, input);
-	_store[_currentContact].setDarkestSecret(input);
+	_store[_currentContact].setIndex(_currentContact + 1);
+	_store[_currentContact].setFirstName(_getInput("Enter First Name: "));
+	_store[_currentContact].setLastName(_getInput("Enter Last Name: "));
+	_store[_currentContact].setNickName(_getInput("Enter Nickname: "));
+	_store[_currentContact].setPhoneNumber(_getInput("Enter Phone Number: "));
+	_store[_currentContact].setDarkestSecret(_getInput("Enter Darkest Secret: "));
 
 	_currentContact++;
+}
+
+string 	Phonebook::_getInput(const string promt)
+{
+	string	input;
+
+	while (input.empty())
+	{
+		cout << promt;
+		getline(cin, input);
+	}
+	return (input);
 }
 

@@ -13,13 +13,14 @@ class Phonebook
 		void searchContact(void);
 		void displayContact(Contact contact);
 		void displayList(void);
-
-	private:
+		
+		private:
 		static int _currentContact;
 		Contact _store[8];
-
-		void printRow(string col1, string col2, string col3, string col4);
-		void printColumn(const string &text);
+		
+		string	_getInput(const string promt);
+		void _printRow(string col1, string col2, string col3, string col4);
+		void _printColumn(const string &text);
 };
 
 #endif

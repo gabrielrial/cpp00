@@ -7,11 +7,12 @@ int main(void)
 {
 	Phonebook	pb;
 	string		input;
-	
 
 	while (1)
 	{
-		std::cout << "|    ADD    |   SEARCH    |    EXIT    |" << std::endl << std::endl;
+		cout <<      "==================== MAIN MENU ====================" << endl;
+		std::cout << "=         ADD    |   SEARCH    |    EXIT          =" << std::endl;
+		cout <<      "===================================================" << endl;
 		std::getline(std::cin, input);
 
 		if (input == "ADD")
